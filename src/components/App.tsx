@@ -1,41 +1,22 @@
 import * as React from "react";
-import { Switch, withRouter } from "react-router-dom";
-import { connect } from "react-redux";
-import * as Loadable from "react-loadable";
-import { Routing } from "./Routing";
-import * as routePaths from "../models/constants/routePaths";
-import { Loader } from "./common/elements/loader";
+import { Switch, Route } from "react-router-dom";
+import { AppRoutes } from "../models/constants/routePaths";
+import { Loader } from "./common/elements/Loader";
 
-// Here we are asynchronously loading components based on their path
-const NotFound = Loadable({ loader: () => import("./common/NotFound"), loading: () => null });
+const Home = React.lazy(() => import("./home/Home"));
+const NotFound = React.lazy(() => import("./common/NotFound"));
 
-interface AppProps {
-    progress: number;
-}
+const App: React.FunctionComponent = (): React.ReactElement<void> => {
+    return (
+        <>
+            <React.Suspense fallback={<Loader toggle={true} />}>
+                <Switch>
+                    <Route path={AppRoutes.Base} exact={true} component={Home} />
+                    <Route path={AppRoutes.Rest} component={NotFound} />
+                </Switch>
+            </React.Suspense>
+        </>
+    );
+};
 
-class App extends React.Component<AppProps, any>  {
-    constructor(props: any) {
-        super(props);
-
-    }
-
-    render() {
-        return (
-            <div className="app-container">
-                <Loader toggle={this.props.progress > 0} />
-
-                <div className="route-holders">
-                    <Switch>
-                        <Routing path={routePaths.AppRoutes.Home} exact={true} component={NotFound} props={null} />
-                        <Routing path="*" component={NotFound} props={null} />
-                    </Switch>
-                </div>
-            </div>
-        );
-    }
-}
-
-function mapStateToProps(state: any): { progress: number } {
-    return { progress: state.ajaxCallsInProgress };
-}
-export default withRouter(connect(mapStateToProps)(App));
+export default App;

@@ -1,6 +1,6 @@
 import * as React from "react";
 import { shallow } from "enzyme";
-import { Loader } from "../components/common/elements/loader/Loader";
+import { Loader } from "../components/common/elements/Loader";
 
 describe("Component: Loader", () => {
 

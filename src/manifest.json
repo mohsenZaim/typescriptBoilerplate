@@ -1,6 +1,6 @@
 {
-    "short_name": "Demo App",
-    "name": "Based on React",
-    "background_color": "#773176",
-    "theme_color": "#773176"
+    "short_name": "Demo",
+    "name": "React based with typescript",
+    "background_color": "#19325c",
+    "theme_color": "#26d367"
 }

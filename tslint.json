@@ -6,8 +6,8 @@
     "linterOptions": {
         "exclude": [
             "src/apis/generated/*.ts",
-            "src/tests/coverage/**",
-            "src/tests/__mocks__/**",
+            "tests/coverage/**",
+            "tests/__mocks__/**",
             "*.js"
         ]
     },
@@ -18,14 +18,14 @@
         "jsx-no-lambda": false,
         "member-access": false,
         "trailing-comma": false,
-        "prefer-for-of": false,
         "object-literal-sort-keys": false,
         "prefer-conditional-expression": false,
         "no-var-requires": false,
         "object-literal-shorthand": false,
+        "no-string-literal": false,
         "no-console": false,
-        "one-variable-per-declaration": false,
-        "no-bitwise": false,
+        "prefer-for-of": false,
+        "no-unused-expression": false,
         "indent": [
             true,
             "spaces",
@@ -39,13 +39,12 @@
             true,
             "dev"
         ],
-        "no-unused-expression": [
-            true,
-            "allow-fast-null-checks"
-        ],
         "max-line-length": [
-            true,
-            200
+            false,
+            {
+                "limit": 200,
+                "ignore-pattern": "^.*(<svg).*$"
+            }
         ],
         "interface-name": [
             true,

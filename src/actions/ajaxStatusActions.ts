@@ -1,13 +1,18 @@
 import * as types from "../models/constants/actionTypes";
-
-export function beginAjaxCall(): any {
-    return { type: types.BEGIN_AJAX_CALL };
+export interface AjaxStatusActions {
+    beginAjaxCall: (dispatch) => any;
+    ajaxCallEnded: (dispatch) => any;
+    ajaxCallError: (dispatch) => any;
 }
 
-export function ajaxCallEnded(): any {
-    return { type: types.END_AJAX_CALL };
+export function beginAjaxCall(dispatch) {
+    return dispatch({ type: types.BEGIN_AJAX_CALL });
 }
 
-export function ajaxCallError(): any {
-    return { type: types.AJAX_CALL_ERROR };
+export function ajaxCallEnded(dispatch) {
+    return dispatch({ type: types.END_AJAX_CALL });
+}
+
+export function ajaxCallError(dispach) {
+    return dispach({ type: types.AJAX_CALL_ERROR });
 }

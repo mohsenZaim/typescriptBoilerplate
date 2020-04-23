@@ -1,5 +1,5 @@
 module.exports = {
-    setupTestFrameworkScriptFile: "<rootDir>/src/tests/setupTest.ts",
+    setupFilesAfterEnv: ["<rootDir>/src/tests/setupTest.ts"],
     testEnvironment: "jsdom",
     testMatch: [
         "**/**/*.test.ts?(x)",
