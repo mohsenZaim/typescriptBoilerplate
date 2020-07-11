@@ -1,8 +1,8 @@
 const path = require('path');
-const merge = require('webpack-merge');
+const { merge } = require('webpack-merge');
 const webpack = require('webpack');
 const common = require('./webpack.config.common.js');
-const { BaseHrefWebpackPlugin } = require("base-href-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = merge(common, {
     output: {
@@ -12,7 +12,11 @@ module.exports = merge(common, {
         path: path.resolve(__dirname, '../dist')
     },
     plugins: [
-        new BaseHrefWebpackPlugin({ baseHref: '/staging' }),
+        new HtmlWebpackPlugin({
+            "template": "../src/index.html",
+            "filename": "./index.html",
+            base: "/staging"
+        }),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'staging')
         }),

@@ -1,5 +1,4 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+const CopyPlugin = require("copy-webpack-plugin");
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 const autoprefixer = require("autoprefixer");
@@ -16,15 +15,11 @@ module.exports = {
         app: ["../src/index.tsx"]
     },
     plugins: [
-        new HtmlWebpackPlugin({
-            "template": "../src/index.html",
-            "filename": "./index.html"
+        new CopyPlugin({
+            patterns: [{ from: "../src/manifest.json" }],
         }),
-        new CopyWebpackPlugin([
-            { from: '../src/manifest.json' }
-        ]),
         new CaseSensitivePathsPlugin(),
-        new Dotenv()
+        new Dotenv() // comment if you are not using any .env file
     ],
     module: {
         rules: [

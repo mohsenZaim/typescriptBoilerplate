@@ -5,7 +5,6 @@ import { BrowserRouter } from "react-router-dom";
 import "./favicon.ico";
 import "./styles/main.scss";
 
-
 // Use BrowserRouter if your are going to use URL without hash
 render(
     <BrowserRouter>
