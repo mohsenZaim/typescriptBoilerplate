@@ -14,7 +14,8 @@
 		"start": "npm run build:dev",
 		"build": "npm run clean && npm run lint && npm run build:production",
 		"staging": "npm run clean && npm run lint && npm run build:staging",
-		"swagger": "swagger-codegen generate -i http://petstore.swagger.io/v2/swagger.json -l typescript-node -t ./template/TypescriptNode -o ./src/apis/generated"
+		"swagger": "swagger-codegen generate -i http://petstore.swagger.io/v2/swagger.json -l typescript-node -t ./templates_mustache/TypescriptNode -o ./src/apis/generated",
+		"nswag": "nswag openapi2tsclient /input:http://petstore.swagger.io/v2/swagger.json /output:src/apis/generated/api.ts /runtime:NetCore31 /template:Axios /typeStyle:interface /templateDirectory:./templates_liquid"
 	},
 	"dependencies": {
 		"axios": "^0.19.2",
