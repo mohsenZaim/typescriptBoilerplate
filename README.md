@@ -1,4 +1,4 @@
-# Sample Demo
+# React-Typescript boilerplate
 
 This is a base architecture app with React, Typescript, SCSS and Webpack, fully updated with latest dependacies.
 
@@ -18,7 +18,8 @@ This base application contain:
 * Web manifest for installing the app as PWA
 * Service workers for PWA
 * Supports .env file for env variables
-* Custom Swagger Typescript template
+* Custom Swagger Typescript templates
+* Nswag Typescript templates
 
 ## Requirements
 
@@ -56,4 +57,9 @@ You can run the tests via: `npm run test`
 ## Swagger sample template
 
 You can use `npm run swagger` to generate a set of sample APIs using my custom template inside api/generated folder,
+you can find my custom typescript/axios based swagger template at root direcory insite template folder.
+
+## Nswag sample template
+
+You can use `npm run nswag` to generate a set of sample APIs using my custom template inside api/generated folder,
 you can find my custom typescript/axios based swagger template at root direcory insite template folder.
