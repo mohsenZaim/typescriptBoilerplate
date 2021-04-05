@@ -17,11 +17,9 @@ This base application contain:
 * Multiple build configuration for webpack
 * Universal http loader based on any number of API calls.
 * Web manifest for installing the app as PWA
-* Service workers for PWA
 * Supports .env file for env variables at compile time
 * Support envriable varibles at runtime in express server via configs api
 * Support imports SVGs as components via svgr
-* Custom Swagger Typescript templates
 * Multi langauge supprot via i18next standard
 * Unit testing and coverage setup
 * Express server to run the production app

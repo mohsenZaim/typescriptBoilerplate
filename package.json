@@ -17,8 +17,8 @@
 		"build": "yarn clean && yarn lint && yarn build:prod",
 		"serverDependencies": "cd webserver && yarn install",
 		"server": "node ./webserver/index.js",
-		"swagger": "swagger-codegen generate -i http://petstore.swagger.io/v2/swagger.json -l typescript-node -t ./templates_mustache/TypescriptNode -o ./src/apis/generated",
-		"nswag": "nswag openapi2tsclient /input:http://petstore.swagger.io/v2/swagger.json /output:src/apis/generated/api.ts /runtime:NetCore31 /template:Axios /typeStyle:interface /templateDirectory:./templates_liquid"
+		"swagger": "swagger-codegen generate -i http://petstore.swagger.io/v2/swagger.json -l typescript-node -o ./src/apis/generated",
+		"nswag": "nswag openapi2tsclient /input:http://petstore.swagger.io/v2/swagger.json /output:src/apis/generated/api.ts /runtime:NetCore31 /template:Axios /typeStyle:interface"
 	},
 	"dependencies": {
 		"axios": "^0.21.1",
