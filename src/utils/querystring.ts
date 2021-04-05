@@ -8,8 +8,8 @@ export function updateQueryStringParam(key: string, value: string, replace?: boo
     url.searchParams.set(key, value);
 
     if (replace) {
-        history.replaceState({}, "", url.href);
+        history.replaceState({}, '', url.href);
     } else {
-        history.pushState({}, "", url.href);
+        history.pushState({}, '', url.href);
     }
 }

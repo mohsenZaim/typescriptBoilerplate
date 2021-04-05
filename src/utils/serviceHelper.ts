@@ -1,13 +1,20 @@
-import { responseInterceptor } from "./responseInterceptor";
-import * as actions from "../actions/ajaxStatusActions";
+import { beginAjaxCall, ajaxCallEnded, ajaxCallError } from '../actions/ajaxStatusActions';
+import { AppRoutes } from '../models/constants/routePaths';
+import { removeAccessToken } from './tokenManagment';
 
-export function serviceHelper(api: Promise<any>, success?, fail?, history?, location?, dispatch?: any) {
-    dispatch && actions.beginAjaxCall(dispatch);
+export const serviceHelper = (api: Promise<any>, success?, fail?, dispatch?: any) => {
+    dispatch && beginAjaxCall(dispatch);
     api.then((response) => {
-        responseInterceptor(response, success, fail, history, location);
-        dispatch && actions.ajaxCallEnded(dispatch);
+        success(response);
+        dispatch && ajaxCallEnded(dispatch);
     }).catch((error) => {
-        responseInterceptor(error.response, success, fail, history);
-        dispatch && actions.ajaxCallError(dispatch);
+        if (error?.status === 401) {
+            removeAccessToken();
+        } else if (error?.status === 403) {
+            window.location.replace(AppRoutes.Forbidden);
+        } else {
+            fail(error);
+        }
+        dispatch && ajaxCallError(dispatch);
     });
-}
+};

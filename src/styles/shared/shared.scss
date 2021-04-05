@@ -1,11 +1,11 @@
 html {
-    font-family: "Ubuntu", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
     font-size: var(--font-size);
 
     body {
         margin: 0px;
         padding: 0px;
-        background: var(--body);
+        background: var(--white);
     }
 }
 
@@ -13,38 +13,18 @@ html {
     display: none !important;
 }
 
-// container
 .container {
-    margin: auto;
-    padding: 12px;
-    max-width: 600px;
-}
+    max-width: 1200;
+    margin: 0 auto;
+    padding: var(--spacing-4);
 
-.home {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    right: 0px;
-    bottom: 0px;
-    overflow-x: hidden;
-    overflow-y: auto;
-    //-webkit-overflow-scrolling: touch;
-}
-
-@include breakpoints(phone) {
-    .home{
-        bottom: 60px;
+    &.larger {
+        max-width: 1400px;
     }
 }
 
-@media (min-width: 769px) {
-    .container {
-        width: 57%;
-    }
-}
-
-@media (min-width: 1200px) {
-    .container {
-        width: 65%;
-    }
+ul {
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
 }

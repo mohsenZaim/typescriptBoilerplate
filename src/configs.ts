@@ -1,35 +1,37 @@
 // API CALL TYPE
-const TYPE_LOCAL = "LOCAL";
-const TYPE_REST = "REST";
+export enum ApiType {
+  LOCAL,
+  REST,
+}
 
 // LANGUAGES
-const LANG_EN = "en";
-const LANG_MALAY = "my";
-const LANG_CHINESE = "ch";
+export enum LanguageType {
+  en,
+  da,
+}
 
 // TOKEN storage
-const TOKEN_MEMORY = "TOKEN_MEMORY";
-const TOKEN_SESSION = "TOKEN_SESSION";
-const TOKEN_PERSIST = "TOKEN_PERSIST";
+export enum TokenType {
+  TOKEN_MEMORY,
+  TOKEN_SESSION,
+  TOKEN_PERSIST,
+}
 
 // API Domain using .env variable
-const DOMAIN = process.env.DOMAIN ? process.env.DOMAIN : "http://domain.com" ;
+const DOMAIN = process.env.API_ENDPOINT || "https://localhost:5001";
 
 // API contexts
 // We will pass this to swagger class constractor if we need different base urls
 const DEFAULT = "";
-const SECONDARY = "/something";
 
 // CONFIG DATA (Please change here only)
 const configs = {
-    delay: 500,
-    toastDelay: 5000,
-    domain: DOMAIN,
-    tokenStorage: TOKEN_MEMORY,
-    type: process.env.NODE_ENV === "production" ? TYPE_REST : TYPE_LOCAL,
-    context: DEFAULT,
-    lang: LANG_EN,
-    activateSW: false
+  delay: 500,
+  domain: DOMAIN,
+  context: DEFAULT,
+  tokenStorage: TokenType.TOKEN_MEMORY,
+  type: ApiType.REST,
+  lang: LanguageType.en,
 };
 
 export default configs;

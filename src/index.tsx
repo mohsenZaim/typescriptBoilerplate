@@ -1,14 +1,14 @@
 import * as React from "react";
 import { render } from "react-dom";
-import App from "./components/App";
 import { BrowserRouter } from "react-router-dom";
+import App from "./components/App";
+import "./languages/i18n";
 import "./favicon.ico";
 import "./styles/main.scss";
 
-// Use BrowserRouter if your are going to use URL without hash
 render(
-    <BrowserRouter>
-        <App />
-    </BrowserRouter>,
-    document.getElementById("app") as HTMLElement
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>,
+  document.getElementById("app") as HTMLElement
 );

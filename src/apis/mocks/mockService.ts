@@ -15,10 +15,10 @@ export function getJson(type: jsonTypes): Promise<any> {
     switch (type) {
         case jsonTypes.SAMPLE:
             if (process.env.NODE_ENV !== "production") { data = require("./jsons/sample.json"); }
-            return new Promise((resolve, reject) => { simulateData(resolve, data, 200, configs.delay); });
+            return new Promise((resolve) => { simulateData(resolve, data, 200, configs.delay); });
 
 
-        default: return new Promise((resolve, reject) => reject("JSON data should not be retireved in production mode"));
+        default: return new Promise((_resolve, reject) => reject("JSON data should not be retireved in production mode"));
     }
 }
 

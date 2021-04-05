@@ -4,17 +4,21 @@
  * @returns {boolean} true if empty
  */
 export function isEmpty(value: any): boolean {
-    if (value === undefined || value === null) { // undefined or null
+    if (value === undefined || value === null) {
+        // undefined or null
         return true;
-    } else if (value instanceof Date) { // Date object behave different from normal objects
+    } else if (value instanceof Date) {
+        // Date object behave different from normal objects
         return false;
-    } else if ((value instanceof Function)) {
+    } else if (value instanceof Function) {
         return false;
-    } else if ((value instanceof Object) && !(value instanceof Array)) { // Object, not an array
+    } else if (value instanceof Object && !(value instanceof Array)) {
+        // Object, not an array
         return Object.keys(value).length < 1;
     } else if (value === false) {
         return true;
-    } else if (value.length < 1) { // Array or string
+    } else if (value.length < 1) {
+        // Array or string
         return true;
     } else {
         return false;
@@ -48,7 +52,7 @@ export function equalLength(value: string, length: number): boolean {
  * @returns {boolean} true if equal
  */
 export function withinRange(value: string, min: number, max: number): boolean {
-    return value && (value.length >= min && value.length <= max);
+    return value && value.length >= min && value.length <= max;
 }
 
 /**
@@ -59,7 +63,7 @@ export function withinRange(value: string, min: number, max: number): boolean {
  * @returns {boolean} true if equal
  */
 export function withinRangeNumber(value: number, min: number, max: number): boolean {
-    return (value === 0 ? true : value) && (value >= min && value <= max);
+    return (value === 0 ? true : value) && value >= min && value <= max;
 }
 
 /**
@@ -100,7 +104,7 @@ export function equal(value: any, value2: any): boolean {
  * @returns {boolean} true if email is valid, false if email is not valid
  */
 export function emailIsValid(value: string): boolean {
-    const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const emailRegex = /^[_a-zæøåA-ZÆØÅ0-9-]+(\.[_a-zæøåA-ZÆØÅ0-9-]+)*@[a-zæøåA-ZÆØÅ0-9-]+(\.[a-zæøåA-ZÆØÅ0-9-]+)*(\.[a-zA-Z]{2,15})$/;
     return emailRegex.test(value);
 }
 
@@ -130,8 +134,8 @@ export function notANumber(value: any): boolean {
  */
 export function emptyObject(value: any): boolean {
     if (value) {
-        if (typeof (value) === "object" && !(value instanceof Array)) {
-            return !((Object.keys(value)).length > 0);
+        if (typeof value === 'object' && !(value instanceof Array)) {
+            return !(Object.keys(value).length > 0);
         }
     }
     return false;

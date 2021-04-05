@@ -1,25 +1,32 @@
 # React-Typescript boilerplate
 
-This is a base architecture app with React, Typescript, SCSS and Webpack, fully updated with latest dependacies.
+This is a base architecture app with React, Typescript, SCSS and Webpack, fully updated with latest dependacies. This base is without react-cli and fully build based on webpack itself for full customizability.
 
 ## Tech stack
 
 This base application contain:
 
-* React 16+
-* React Context + Reducer hooks
+* Yarn base (why not?)
+* React 17+
+* Global state with multi reducers via React Context
 * Typescript
-* Webpack 4+
-* Code splitting and Routing Baesd on webpack 4 and React Router 5
+* Webpack 5+
+* Code splitting
 * Mock Services with API simulations
-* SASS styling
+* SASS styling with encapsulated modules
 * Multiple build configuration for webpack
 * Universal http loader based on any number of API calls.
 * Web manifest for installing the app as PWA
 * Service workers for PWA
-* Supports .env file for env variables
+* Supports .env file for env variables at compile time
+* Support envriable varibles at runtime in express server via configs api
+* Support imports SVGs as components via svgr
 * Custom Swagger Typescript templates
-* Nswag Typescript templates
+* Multi langauge supprot via i18next standard
+* Unit testing and coverage setup
+* Express server to run the production app
+* TS-linting with official eslint
+* Prettier
 
 ## Requirements
 
@@ -27,39 +34,43 @@ This application requires:
 
 * `node 8.10.0` or above
 * `npm 5.7.1` or above
+* `yarn 1.2.*` or above
 * To compile SCSS files, you need to `install python (2.7,3 or above)`
 
 ## Installation
 
-Type `npm install` in your root directory to install the dependacies.
-
-For `Visual Studio Code` users, please install official [TSLint](https://marketplace.visualstudio.com/items?itemName=eg2.tslint) plugin which has been published by `egamma` on your IDE, to enable `ts-linting` as by default you need to pass TSLint to be able to compile your code for production.
+Type `yarn install` in your root directory to install the dependacies.
 
 ## Development
 
-This project uses proper `ts-linting` and our lints are based on `tslint:latest` and `tslint-react` , with our own changes in lint rules for a more consistant (less annoying) coding.
-After successful npm installation, to run the app in development use: `npm start`
+To run the app in development use: `yarn start`
 Application will run on `http://localhost:3000` by default.
-
-## Staging Build
-
-If you are looking to build the app which can be demo as stand alone (means it will contain mock data)
-then type: `npm run staging`
 
 ## Production Build
 
-For production you need to run: `npm run build`
+For production you need to run: `yarn build`
 
 ## Testing via Jest
 
-You can run the tests via: `npm run test`
+You can run the tests via: `yarn test`
+`yarn test:ci` (to use the test without watching file changes)
+
+## Coverage
+
+You can run the tests via: `yarn coverage`
+`yarn coverage:ci` (to use the coverage without watching file changes)
+
+# Run express server:
+
+`yarn serverDependencies` to install the express server dependacies
+`yarn server` then listen to port 8080
 
 ## Swagger sample template
 
-You can use `npm run swagger` to generate a set of sample APIs using my custom template inside api/generated folder,
+You can use `yarn swagger` to generate a set of sample APIs using my custom template inside api/generated folder,
 you can find my custom typescript/axios based swagger template at root direcory insite template folder.
 
 ## Nswag sample template
 
-You can use `npm run nswag` to generate a set of sample APIs using my custom template inside api/generated folder,
+You can use `yarn nswag` to generate a set of sample APIs using my custom template inside api/generated folder,
 you can find my custom typescript/axios based swagger template at root direcory insite template folder.

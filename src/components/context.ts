@@ -1,9 +1,9 @@
-import * as React from "react";
-import { InitialStateModel } from "../reducers/initialState";
+import * as React from 'react';
+import { initialStateCombined, MainState } from '../reducers/reducers';
 
-export const HomeContext = React.createContext<HomeContextModel>(null);
+export const AppContext = React.createContext<AppContextModel>(initialStateCombined);
 
-export interface HomeContextModel {
-    state: InitialStateModel;
-    dispatch: any;
+export interface AppContextModel {
+    state: MainState;
+    dispatch: React.Dispatch<any>;
 }

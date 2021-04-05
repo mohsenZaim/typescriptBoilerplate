@@ -1,42 +1,26 @@
-import * as React from "react";
-import { useLocation } from "react-router-dom";
-import { Loader } from "../common/elements/Loader";
-import { appReducer } from "../../reducers/reducer";
-import { initialState } from "../../reducers/initialState";
-import { HomeContext } from "../context";
-import { TextBox } from "../common/elements/TextBox";
-import logo from "../../assets/images/ReactLogo.png";
+import * as React from 'react';
+import { Button } from '../common/elements/button/Button';
+import styles from './styles.module.scss';
+import { useTranslation } from 'react-i18next';
+import { AppContext, AppContextModel } from '../context';
 
 const Home: React.FunctionComponent = (): React.ReactElement<void> => {
-    const [state, dispatch] = React.useReducer(appReducer, initialState);
-    const [text, setText] = React.useState<string>("");
-    const hiddenElement = React.useRef(null);
-    const location = useLocation();
+    const { state } = React.useContext<AppContextModel>(AppContext);
+    const { t } = useTranslation();
 
-    // scroll to top whenever route changes
     React.useEffect(() => {
-        hiddenElement.current.scrollIntoView();
-    }, [location.pathname]);
+        console.log('Access to global state or dispach', state.generic);
+    }, []);
 
     return (
-        <>
-            <HomeContext.Provider value={{ state, dispatch }}>
-                <Loader toggle={state.httpCallsInProgress !== 0} />
-                {/* we will scroll to this hidden element each time route changes as it is a SPA  */}
-                <div ref={hiddenElement} />
-
-                <div className="container home">
-                    <img src={logo} width="100" height="100" />
-                    <h1>HOME with sample textbox component</h1>
-                    <TextBox
-                        name="text"
-                        value={text}
-                        placeholder="placeholder"
-                        onChange={(e) => { setText(e.target.value) }}
-                    />
+        <div className={styles.home}>
+            <div className={styles.content}>
+                <h1 className={styles.title}>{t('home.title')}</h1>
+                <div>
+                    <Button onClick={() => alert('clicked')} label={t('home.testBtn')} />
                 </div>
-            </HomeContext.Provider>
-        </>
+            </div>
+        </div>
     );
 };
 
