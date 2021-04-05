@@ -60,7 +60,7 @@ You can run the tests via: `yarn test`
 You can run the tests via: `yarn coverage`
 `yarn coverage:ci` (to use the coverage without watching file changes)
 
-# Run express server:
+## Run express server:
 
 `yarn serverDependencies` to install the express server dependacies
 `yarn server` then listen to port 8080
