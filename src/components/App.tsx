@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { FunctionComponent, ReactElement, lazy, useReducer, useRef, useEffect, Suspense } from 'react';
 import { Switch, Route, useLocation, Redirect } from 'react-router-dom';
 import { AppRoutes } from '../models/constants/routePaths';
 import { Loader } from './common/elements/loader/Loader';
@@ -9,21 +9,21 @@ import { getBrowserName } from '../utils/browserDetector';
 const packageJson = require('../../package.json');
 
 // Code splitted components
-const Forbidden = React.lazy(() => import('./common/forbidden/Forbidden'));
-const NotFound = React.lazy(() => import('./common/notFound/NotFound'));
-const Home = React.lazy(() => import('./home/Home'));
+const Forbidden = lazy(() => import('./common/forbidden/Forbidden'));
+const NotFound = lazy(() => import('./common/notFound/NotFound'));
+const Home = lazy(() => import('./home/Home'));
 
-const App: React.FunctionComponent = (): React.ReactElement<void> => {
-    const [state, dispatch] = React.useReducer<MainReducer>(mainReducer, initialStateCombined);
-    const hiddenElement = React.useRef(null);
+const App: FunctionComponent = (): ReactElement<void> => {
+    const [state, dispatch] = useReducer<MainReducer>(mainReducer, initialStateCombined);
+    const hiddenElement = useRef(null);
     const location = useLocation();
 
     // scroll to top whenever route changes
-    React.useEffect(() => {
+    useEffect(() => {
         hiddenElement.current.scrollIntoView();
     }, [location.pathname]);
 
-    React.useEffect(() => {
+    useEffect(() => {
         console.log('browser: ', getBrowserName());
         console.log('process', process.env.API_ENDPOINT);
     }, []);
@@ -37,7 +37,7 @@ const App: React.FunctionComponent = (): React.ReactElement<void> => {
                 <Loader toggle={state.generic.httpCallsInProgress !== 0} fullscreen={true} />
                 <Header />
 
-                <React.Suspense fallback={<Loader toggle={true} fullscreen={true} />}>
+                <Suspense fallback={<Loader toggle={true} fullscreen={true} />}>
                     <Switch>
                         <Route path={AppRoutes.Base} exact={true}>
                             <Redirect to={AppRoutes.Home} />
@@ -46,7 +46,7 @@ const App: React.FunctionComponent = (): React.ReactElement<void> => {
                         <Route path={AppRoutes.Forbidden} component={Forbidden} />
                         <Route path={AppRoutes.Rest} component={NotFound} />
                     </Switch>
-                </React.Suspense>
+                </Suspense>
             </AppContext.Provider>
         </>
     );

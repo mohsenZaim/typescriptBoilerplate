@@ -1,14 +1,14 @@
-import * as React from 'react';
+import React, { ReactElement, useContext, useEffect, FunctionComponent } from 'react';
 import { Button } from '../common/elements/button/Button';
 import styles from './styles.module.scss';
 import { useTranslation } from 'react-i18next';
 import { AppContext, AppContextModel } from '../context';
 
-const Home: React.FunctionComponent = (): React.ReactElement<void> => {
-    const { state } = React.useContext<AppContextModel>(AppContext);
+const Home: FunctionComponent = (): ReactElement<void> => {
+    const { state } = useContext<AppContextModel>(AppContext);
     const { t } = useTranslation();
 
-    React.useEffect(() => {
+    useEffect(() => {
         console.log('Access to global state or dispach', state.generic);
     }, []);
 

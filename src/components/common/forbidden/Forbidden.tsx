@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { FunctionComponent, ReactElement, memo } from 'react';
 import { useTranslation } from "react-i18next";
 import styles from "./styles.module.scss";
 

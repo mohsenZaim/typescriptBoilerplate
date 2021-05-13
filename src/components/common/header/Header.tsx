@@ -1,12 +1,12 @@
-import * as React from 'react';
+import React, { FunctionComponent, ReactElement, memo, useContext } from 'react';
 import classNames from 'classnames';
 import { AppContextModel, AppContext } from '../../context';
 import { useTranslation } from 'react-i18next';
 import styles from './styles.module.scss';
 
-const Header: React.FunctionComponent = React.memo(
-    (): React.ReactElement<void> => {
-        const { state } = React.useContext<AppContextModel>(AppContext);
+const Header: FunctionComponent = memo(
+    (): ReactElement<void> => {
+        const { state } = useContext<AppContextModel>(AppContext);
         const { t, i18n } = useTranslation();
 
         return (
@@ -27,9 +27,7 @@ const Header: React.FunctionComponent = React.memo(
                         >
                             EN
                         </li>
-                        <li>
-                            Other
-                        </li>
+                        <li>Other</li>
                     </ul>
                 </div>
             </nav>

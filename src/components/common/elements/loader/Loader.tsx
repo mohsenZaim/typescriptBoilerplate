@@ -1,15 +1,15 @@
-import * as React from 'react';
+import React, { FunctionComponent, ReactElement, memo } from 'react';
 import './loader.scss';
 
 export interface LoaderProps {
     toggle: boolean;
     fullscreen?: boolean;
     className?: string;
-    children?: React.ReactElement;
+    children?: ReactElement;
 }
 
-export const Loader: React.FunctionComponent<LoaderProps> = React.memo(
-    (props: LoaderProps): React.ReactElement<void> => {
+export const Loader: FunctionComponent<LoaderProps> = memo(
+    (props: LoaderProps): ReactElement<void> => {
         if (props.toggle) {
             return (
                 <div className={`loader-wrapper ${props.fullscreen ? 'fullscreen' : ''} ${props.className || ''}`}>
